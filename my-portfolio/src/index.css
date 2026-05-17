@@ -1,0 +1,29 @@
+﻿:root {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --surface: #111827;
+  --muted: #94a3b8;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+}
