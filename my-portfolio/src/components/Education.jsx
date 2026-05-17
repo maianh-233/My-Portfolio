@@ -1,10 +1,11 @@
+import logo from "../assets/Logo.png"
 function Education() {
   return (
     <section id="education" className="education-card">
       <div className="education-grid">
         <div className="education-logo">
           <img
-            src="https://upload.wikimedia.org/wikipedia/vi/thumb/0/0f/%C4%90%E1%BA%A1i_h%E1%BB%8Dc_S%C3%A0i_G%C3%B2n_logo.svg/800px-%C4%90%E1%BA%A1i_h%E1%BB%8Dc_S%C3%A0i_G%C3%B2n_logo.svg.png"
+            src={logo}
             alt="Saigon University"
           />
         </div>

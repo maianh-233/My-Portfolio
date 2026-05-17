@@ -33,9 +33,9 @@ function Hero() {
           </div>
 
           <p className="hero-body">
-            Solid foundation in web development, backend technologies, and databases.
-            Experienced in developing both web and desktop applications.
-            Seeking an internship opportunity to apply my knowledge and grow in a professional environment.
+            Final-year Information Technology student (Software Engineering major) with a strong orientation toward Web and Full-stack Development.
+            Solid foundation in web programming, backend development, and database systems, with hands-on experience in building both web and desktop applications.
+            Seeking an internship opportunity in a professional environment to further strengthen practical skills and pursue long-term growth in software development.
           </p>
 
           <div className="hero-contact-panel">
