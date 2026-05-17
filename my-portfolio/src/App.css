@@ -736,18 +736,76 @@ body {
     position: relative;
     border-radius: 1.5rem;
     overflow: hidden;
-    min-height: 460px;
-    max-height: min(72vh, 680px);
+    min-height: 360px;
+    max-height: min(65vh, 560px);
     background: #0b1228;
     display: grid;
     place-items: center;
+    cursor: zoom-in;
   }
 
   .review-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-height: 100%;
+    object-fit: contain;
     display: block;
+  }
+
+  .image-caption {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    text-align: center;
+  }
+
+  .image-preview-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    display: grid;
+    place-items: center;
+    background: rgba(15, 23, 42, 0.95);
+    padding: 1.5rem;
+  }
+
+  .image-preview-card {
+    position: relative;
+    width: min(1100px, 100%);
+    max-height: min(90vh, 100%);
+    border-radius: 2rem;
+    overflow: hidden;
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    box-shadow: 0 40px 120px -40px rgba(0, 0, 0, 0.8);
+  }
+
+  .image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #0b1228;
+  }
+
+  .image-preview-close-button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    background: rgba(15, 23, 42, 0.9);
+    color: #f8fafc;
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+  }
+
+  .image-preview-close-button:hover {
+    background: rgba(30, 41, 59, 0.98);
   }
 
   .review-carousel-controls {

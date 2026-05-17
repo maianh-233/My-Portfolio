@@ -3,6 +3,7 @@ import { projects } from './projectsData';
 
 function ProjectReview({ projectName, onClose }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [previewImage, setPreviewImage] = useState(null);
   const autoPlayTimerRef = useRef(null);
   const project = projects.find((p) => p.name === projectName);
 
@@ -30,6 +31,18 @@ function ProjectReview({ projectName, onClose }) {
     if (autoPlayTimerRef.current) {
       clearInterval(autoPlayTimerRef.current);
     }
+  };
+
+  const openImagePreview = (index) => {
+    const nextIndex = index % images.length;
+    setCurrentImageIndex(nextIndex);
+    setPreviewImage(images[nextIndex]);
+    stopAutoPlay();
+  };
+
+  const closeImagePreview = () => {
+    setPreviewImage(null);
+    startAutoPlay();
   };
 
   const goToImage = (index) => {
@@ -97,13 +110,25 @@ function ProjectReview({ projectName, onClose }) {
         {hasImages ? (
           <>
             <div className="review-carousel">
-              <div className="review-image-container">
+              <div
+                className="review-image-container"
+                role="button"
+                tabIndex={0}
+                onClick={() => openImagePreview(currentImageIndex)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openImagePreview(currentImageIndex);
+                  }
+                }}
+              >
                 <img
                   src={images[currentImageIndex]}
                   alt={`${project.name} screenshot ${currentImageIndex + 1}`}
                   className="review-image"
                 />
               </div>
+              <p className="image-caption">Click image to open a larger preview</p>
 
               <div className="review-carousel-controls">
                 <button
@@ -150,6 +175,26 @@ function ProjectReview({ projectName, onClose }) {
                 </button>
               ))}
             </div>
+
+            {previewImage && (
+              <div className="image-preview-dialog" role="dialog" aria-modal="true">
+                <div className="image-preview-card">
+                  <button
+                    type="button"
+                    className="image-preview-close-button"
+                    onClick={closeImagePreview}
+                    aria-label="Close enlarged image"
+                  >
+                    ✕
+                  </button>
+                  <img
+                    src={previewImage}
+                    alt={`Enlarged view of ${project.name}`}
+                    className="image-preview"
+                  />
+                </div>
+              </div>
+            )}
           </>
         ) : (
           <div className="review-no-images">
